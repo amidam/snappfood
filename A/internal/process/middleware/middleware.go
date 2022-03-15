@@ -1,16 +1,16 @@
 package middleware
 
 import (
-	"snappfood/A/internal/dispatcher/service"
+	"snappfood/A/internal/process/service"
 
 	"github.com/go-kit/log"
 )
 
 // middleware describes a service middleware.
-type middleware func(service.Dispatcher) service.Dispatcher
+type middleware func(service.Process) service.Process
 
 func Logging(logger log.Logger) middleware {
-	return func(next service.Dispatcher) service.Dispatcher {
+	return func(next service.Process) service.Process {
 		return &logging{
 			next:   next,
 			logger: logger,
@@ -19,6 +19,6 @@ func Logging(logger log.Logger) middleware {
 }
 
 type logging struct {
-	next   service.Dispatcher
+	next   service.Process
 	logger log.Logger
 }

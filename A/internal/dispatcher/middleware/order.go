@@ -8,7 +8,8 @@ import (
 	"snappfood/A/internal/dispatcher/model/responses"
 )
 
-func (mw logmw) GetOrder(ctx context.Context, req requests.GetOrder) (resp responses.GetOrder, err error) {
+// TODO: use pointer for method or not
+func (mw logging) GetOrder(ctx context.Context, req requests.GetOrder) (resp responses.GetOrder, err error) {
 	defer func(begin time.Time) {
 		mw.logger.Log(
 			"method", "GetOrder",
@@ -20,6 +21,6 @@ func (mw logmw) GetOrder(ctx context.Context, req requests.GetOrder) (resp respo
 		}
 	}(time.Now())
 
-	resp, err = mw.Dispatcher.GetOrder(ctx, req)
+	resp, err = mw.next.GetOrder(ctx, req)
 	return
 }
