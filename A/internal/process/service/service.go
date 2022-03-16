@@ -3,7 +3,8 @@ package service
 import (
 	"context"
 
-	"github.com/go-redis/redis/v8"
+	"snappfood/A/pkg/db"
+	"snappfood/A/pkg/redis"
 )
 
 type Process interface {
@@ -11,15 +12,13 @@ type Process interface {
 }
 
 type process struct {
-	redisClient *redis.Client
+	redisClient *redis.Redis
+	db          *db.DB
 }
 
-func NewDispatcher() Process {
+func NewProcess() Process {
 	return &process{
-		redisClient: redis.NewClient(&redis.Options{
-			Addr:     "localhost:6379", // TODO: read from config
-			Password: "",
-			DB:       0,
-		}),
+		redisClient: redis.New(),
+		db:          db.New(),
 	}
 }

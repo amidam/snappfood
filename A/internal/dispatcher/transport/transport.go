@@ -26,7 +26,7 @@ func MakeHandler(svc service.Dispatcher, logger log.Logger) http.Handler {
 		kithttp.ServerErrorEncoder(encodeError),
 	}
 
-	r.Methods(http.MethodPost).Path("/api/order").Handler(kithttp.NewServer( // TODO
+	r.Methods(http.MethodPost).Path("/api/order").Handler(kithttp.NewServer(
 		e.GetOrderEndpoint,
 		decodeGetOrderRequest,
 		encodeResponse,

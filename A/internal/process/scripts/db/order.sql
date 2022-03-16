@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS orders (
+    id INT PRIMARY KEY,
+    price INT NOT NULL,
+    title VARCHAR(26) NOT NULL
+);

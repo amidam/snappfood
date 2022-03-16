@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"os"
 
 	"snappfood/A/internal/dispatcher/model/requests"
 	"snappfood/A/internal/dispatcher/model/responses"
@@ -20,8 +21,8 @@ type dispatcher struct {
 func NewDispatcher() Dispatcher {
 	return &dispatcher{
 		redisClient: redis.NewClient(&redis.Options{
-			Addr:     "localhost:6379", // TODO: read from config
-			Password: "",
+			Addr:     os.Getenv("REDIS_ADDR"),
+			Password: os.Getenv("REDIS_PASSWORD"),
 			DB:       0,
 		}),
 	}

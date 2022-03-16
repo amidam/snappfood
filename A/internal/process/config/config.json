@@ -1,0 +1,8 @@
+{
+    "DBDriverName": "mysql",
+    "DBUsername": "user",
+    "DBPassword": "dbpass",
+    "DBName": "snappfood",
+    "RedisAddr": "localhost:6379",
+    "RedisPassword": "redispass"
+}
